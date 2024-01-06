@@ -1,4 +1,4 @@
-# orthodoxphilly
+# Orthodox Philly
 
 Landing page for Orthodox Christian Philadelphians.
 
