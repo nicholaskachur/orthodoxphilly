@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./style.css" rel="stylesheet">
+    <link href="./favicon.png" rel="icon" type="image/png">
+    <title>Orthodox Philly</title>
+    <meta name="description" content="Landing page for Philadelphia Orthodox Christians">
+
+    <script>
+    function setSalutation() {
+        let now = new Date();
+        let today = now.toLocaleString("en-US", { weekday: "long" });
+        // Debug: let today = now.toLocaleString("en-US", { timeStyle: "long" });
+        let salutation = document.getElementById("salutation");
+        salutation.innerText = `Happy ${today}! 🎉`;
+    }
+
+    window.onfocus = setSalutation;
+    //window.onload = setSalutation; 
+    </script>
+</head>
+
+<body>
+<header>
+    <h1>Orthodox Philly</h1>
+    <hr>
+</header>
+
+<div id="heroContainer">
+    <img id="heroImage" src=./christ-icon.jpeg
+     alt="Icon of Christ from Saint George Orthodox Church in Upper Darby, PA.">
+    <p><em>
+        Icon of Christ from Saint George Orthodox Church in Upper Darby, PA.
+        Copyright 2016, Alexei Mansour.
+    </em></p>
+</div>
+
+<p>Hello and welcome to Orthodox Philly. <span id="salutation">Happy Day! 🎉</span></p>
+
+
+<footer>
+    <hr>
+    <p><em>Last updated 2024.</em></p>
+</footer>
+</body>
+</html>
