@@ -1,56 +1,130 @@
-body {
-    font-size: 1.2em;
-    font-face: Charter, system-ui;
-    margin: 1em auto;
-    max-width: 32em;  /* Also see img declaration below. */
-    padding: 0 .62em;  /* Helpful on mobile. */
+* {
+    /* Reset margin, since different browsers default this differently. */
+    margin: 0;
 }
 
-h1, h2, h3 {
-    line-height: 1.2em;
+:root {
+    --max-width: 36rem;
+    --base-font-size: 1.4rem;
+    --font-family: Charter, system-ui;
+    color-scheme: light;
+
+    /* Color definitions inspired by coolors.com palette picker. */
+    --light-neutral: #EDEAE0;  /* Alabaster: a brown-tinged off-white. */
+    --dark-neutral: #111111;   /* Night: a deep black. */
+    --primary-blue: #235789;   /* Lapis Lazuli: a medium blue. */
+    --dark-blue: #1F305E;      /* Delft Blue: a dark navy blue. */
+    --medium-blue: #4682b4;    /* Steel Blue: a grey-blue. */
+    --light-blue: #9EB9D4;     /* Powder Blue: a grey-sky blue. */
+    --lightest-blue: #F0F8FF;  /* Alice Blue: a white-blue. */
+    --purple: #8D3B72;         /* Plum: a blue-purple. */
+    --light-purple: #E0B0FF;   /* Mauve: a light purple. */
+
+    --text-color: var(--dark-neutral);
+    --page-bg-color: var(--light-neutral);
+    --text-highlight-color: var(--primary-blue);
+    --text-highlight-hovered-color: var(--light-blue);
+    --link-color: var(--primary-blue);
+    --link-visited-color: var(--purple);
+    --link-hovered-color: var(--medium-blue);
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --text-color: var(--light-neutral);
+        --page-bg-color: var(--dark-neutral);
+        --text-highlight-color: var(--light-blue);
+        --text-highlight-hovered-color: var(--primary-blue);
+        --link-color: var(--light-blue);
+        --link-visited-color: var(--light-purple);
+        --link-hovered-color: var(--lightest-blue);
+    }
+}
+
+body {
+    color: var(--text-color);
+    background: var(--page-bg-color);
+    font-size: var(--base-font-size);
+    font-face: var(--font-family);
+    margin: calc(var(--base-font-size) * 0.8) auto;  /* Top-Bottom Left-Right */
+    padding: 0 calc(var(--base-font-size) * 0.5);  /* Helpful on mobile, also T-B, L-R. */
+    max-width: var(--max-width);  /* Also see img declaration below. */
+    line-height: 1.35;  /* Unit-less line-height preffered, https://stackoverflow.com/a/20818206 */
+}
+
+a:link {
+    color: var(--link-color);
+}
+
+a:visited {
+    color: var(--link-visited-color);
+}
+
+a:hover, a:visited:hover {
+    color: var(--link-hovered-color);
+}
+
 
 h1 {
+    color: var(--text-highlight-color);
+    font-size: calc(var(--base-font-size) * 1.8);
     text-align: center;
     margin: 0;
 }
 
-h3 {
-    font-size: 1em;
+h1:hover {
+    color: var(--text-highlight-hovered-color);
+}
+
+h1, h2 {
+    text-wrap: balance;
+}
+
+h2 {
+    font-size: calc(var(--base-font-size) * 1.25);
+    margin-top: calc(var(--base-font-size) * 1.5);
+    margin-bottom: calc(var(--base-font-size) * 0.2);
+}
+
+p {
+    text-wrap: pretty;
+    margin-top: calc(var(--base-font-size) * 0.8);
+    margin-bottom: calc(var(--base-font-size) * 0.2);
+}
+
+header {
+    margin-bottom: var(--base-font-size);
+}
+
+footer {
+    text-align: right;
+    margin-top: var(--base-font-size);
+}
+
+img {
+    max-width: var(--max-width);  /* Required here in addition to on <body>. */
+    width: 100%;
+    height: auto;
 }
 
 .hidden {
     display: none;
 }
 
-footer {
+.caption {
+    font-size: calc(var(--base-font-size) * 0.8);
+    font-style: italic;
+}
+
+.imgContainer {
+    margin-top: calc(var(--base-font-size) * 0.8);
+    margin-bottom: calc(var(--base-font-size) * 0.8);
+}
+
+.signature {
     text-align: right;
-}
-
-img {
-    max-width: 32em;  /* Also see body max-width declaration above. */
-    width: 100%;
-    height: auto;
-}
-
-@media print {
-    body { max-width: none; }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        color: white;
-        background: black;
-    }
-    a:link {
-        color: #9cf;
-    }
-    a:hover, a:visited:hover {
-        color: #cef
-    }
-    a:visited {
-        color: #c9f
-    }
+    font-style: italic;
 }
 
 
