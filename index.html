@@ -9,14 +9,68 @@
     <meta name="description" content="Landing page for Philadelphia Orthodox Christians">
 
     <script>
+    // It would probably be better to pull these from somewhere or, at
+    // least, allow for specifying seasons/weeks altogether, but
+    // that's a problem for future Nicholas.
+    const specialSalutations = {
+        "1/6/2025": "Blessed Theophany!",  // Fixed feast.
+
+        // Lent, ideally would say Blessed Lent the whole season, but that's a lot.
+        "3/2/2025": "Blessed Forgiveness Sunday!",
+        "3/3/2025": "Blessed first day of Lent!",
+        "3/25/2025": "Blessed Annunciation!",  // Fixed feast.
+
+        // Holy Week
+        "4/12/2025": "Blessed Lazarus Saturday!",
+        "4/13/2025": "Blessed Palm Sunday!",
+        "4/14/2025": "Blessed Holy Week!",
+        "4/15/2025": "Blessed Holy Week!",
+        "4/16/2025": "Blessed Holy Week!",
+        "4/17/2025": "Blessed Holy Week!",
+        "4/18/2025": "Blessed Holy Week!",
+        "4/19/2025": "Blessed Holy Week!",
+        "4/20/2025": "Blessed Pascha! Christ is risen!",
+
+        // Bright Week
+        "4/21/2025": "Blessed Bright Week!",
+        "4/22/2025": "Blessed Bright Week!",
+        "4/23/2025": "Blessed Bright Week!",
+        "4/24/2025": "Blessed Bright Week!",
+        "4/25/2025": "Blessed Bright Week!",
+        "4/26/2025": "Blessed Bright Week!",
+        "4/27/2025": "Blessed Thomas Sunday!",
+
+        // Other Paschalion feasts.
+        "5/29/2025": "Blessed Ascension!",
+        "6/8/2025": "Blessed Pentecost!",
+
+        // Other fixed feasts.
+        "8/6/2025": "Blessed Transfiguration!",
+        "8/15/2025": "Blessed Dormition!",
+        "12/6/2025": "Blessed Saint Nicholas Day! 🎅",
+        "12/24/2025": "Blessed Nativity Eve! 🎅",
+        "12/25/2025": "Blessed Nativity!",
+    }
+    const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
+        weekday: "long"
+    });
+    const dateFormatter = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+    });
+
     function setSalutation() {
         let now = new Date();
-        let today = now.toLocaleString("en-US", { weekday: "long" });
-        // Debug: let today = now.toLocaleString("en-US", { timeStyle: "long" });
+        let today = dateFormatter.format(now);
         let salutation = document.getElementById("salutation");
-        salutation.innerText = `Happy ${today}! 🎉`;
+        if (Object.hasOwn(specialSalutations, today)) {
+            salutation.innerText = specialSalutations[today];
+        } else {
+            let weekday = weekdayFormatter.format(now);
+            salutation.innerText = `Happy ${weekday}! 🎉`;
+        }
     }
-
     window.onfocus = setSalutation;
     window.onload = setSalutation;
     </script>
@@ -49,8 +103,8 @@
 
 <p>
     Former iterations of this website aimed to educate about all the
-    parishes and events going on in the area, but I&rsquo;ve reduced my
-    ambitions since then. If you have any questions, comments, or
+    parishes and events going on in the area, but I&rsquo;ve reined in
+    my ambitions since then. If you have any questions, comments, or
     concerns, please send an email to
     <a href="mailto:info@orthodoxphilly.org">info@orthodoxphilly.org</a>,
     and I&rsquo;ll see if there&rsquo;s anything I can do to help.
