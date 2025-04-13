@@ -46,7 +46,7 @@ body {
     color: var(--text-color);
     background: var(--page-bg-color);
     font-size: var(--base-font-size);
-    font-face: var(--font-family);
+    font-family: var(--font-family);
     margin: calc(var(--base-font-size) * 0.8) auto;  /* Top-Bottom Left-Right */
     padding: 0 calc(var(--base-font-size) * 0.5);  /* Helpful on mobile, also T-B, L-R. */
     max-width: var(--max-width);  /* Also see img declaration below. */
